@@ -13,12 +13,12 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/menus/navbar', async (req, res) => {
+app.get('/menus/navbarItems', async (req, res) => {
     async function run() {
         try {
             const database = await connectToDatabase();
-            const users = database.collection('menus');
-            const cursor = users.find();
+            const navbarItems = database.collection('navbarItems');
+            const cursor = navbarItems.find();
             const result = await cursor.toArray()
             res.json(result);
         } catch (error) {
